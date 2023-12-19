@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Count Patterns</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if result is defined %}
+        <div class="result-container">
+            <h1>Result</h1>
+            <p>{{ result }}</p>
+            <br>
+            <a href="/">Kembali ke Halaman Utama</a>
+        </div>
+    {% else %}
+        <h1>Cari Dan Hitung Pola</h1>
+        <form action="/process" method="post">
+            <label for="text">Masukkan Teks:</label>
+            <textarea name="text" id="text" rows="4" required></textarea>
+            <br>
+            <label for="pattern">Masukkan Pola Yang Ingin Dicari:</label>
+            <input type="text" name="pattern" id="pattern" required>
+            <br>
+            <label>Pilih Operasi:</label>
+            <select name="choice" required>
+                <option value="1">Cari pola</option>
+                <option value="2">Hitung pola</option>
+            </select>
+            <br>
+            <button type="submit">Proses</button>
+        </form>
+    {% endif %}
+</body>
+</html>
